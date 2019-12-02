@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>|Cadastro|</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.css') }}">
+
+    <style>
+        div.container{
+            box-shadow: 5px 10px 5px gray;
+        }
+        body{
+            width: 50%;
+            height: 100%;
+            margin: auto;
+        }
+        body{
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+        .form-signin .form-control{
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 6px;
+            font-size: 12px;
+        }
+        .form-signin .form-control:focus {
+            z-index: 1;
+        }
+        .form-signin input[type='text']{
+            margin-bottom: 12px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .form-signin input[type='password']{
+            margin-bottom: 12px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        #imagem{
+            margin-left: 40%;
+        }        
+        h1{
+            margin-left: 35%;
+        }
+        p.btn_voltar{
+            margin-left: 40%;
+        }
+    </style>
+
+</head>
+
+<body class="text-container"></body>
+    <div class="container">
+            <form action="/novo_usu" method="POST" class="form-signin">
+                <img id="imagem" src="../static/person_add-24px.svg" alt="" class="mb-4" width="72" height="72">
+                
+                    
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Primeiro nome</label>
+                    <input type="text" class="form-control" id="nome_prof" name="nome_prof" placeholder="Seu nome" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Segundo Nome</label>
+                    <input type="text" class="form-control" name="segundo_nome" id="segundo_nome" placeholder="Sobrenome" required>
+                    </div>
+                    
+                    <div class="col-md-4 mb-3">
+                        <label for="validationDefaultMatricula">Matrícula</label>
+                        <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Matrícula" required>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                            <label for="validationDefaultMatricula">Telefone</label>
+                            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" required>
+                        </div>
+
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                    <label for="validationDefault03">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Digite o seu Email" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                    <label for="validationDefault04">Senha</label>
+                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
+                    </div>
+                
+                    </div>
+                    <div class="col-md-3 mb-3">
+                    <label for="validationDefault05">Confirmar senha</label>
+                    <input type="password" class="form-control" id="confirm_password" placeholder="Confirme a sua senha" required>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" type="submit">Enviar</button> 
+            </form>
+            <br>
+            <a href="{{url_for('index')}}"><button class="btn btn-secondary">Home</button> </a>
+            <p class="mt-5 mb-3 text-muted">IFCE Campus Crato <br>  <strong>Sistema de reserva de Laboratórios</strong></p>
+    </div>
+    
+</body>
+<script>
+    var password = document.getElementById("senha")
+      , confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword(){
+    if(password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Senhas diferentes!");
+    } else {
+        confirm_password.setCustomValidity('');
+    }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
+</html>

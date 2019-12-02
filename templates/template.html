@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RESERVA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+</head>
+<body>
+
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active " href="{{url_for('index')}}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="{{url_for('inicio')}}">Listar Ocupados</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('novo')}}">Reservar</a>
+            </li>
+            
+            <li class="nav-item">
+                {% if session['usuario_logado'] == None %}
+                    <a class="nav-link active" href="{{url_for('login')}}">LOGIN</a>
+                {% endif %}
+
+                {% if session['usuario_logado'] != None %}
+                    <a class="nav-link active" href="{{url_for('logout')}}">SAIR</a>
+                {% endif %}
+            </li>
+            {% if session['usuario_logado'] == None %}
+            <li class="nav-item">
+                <a class="nav-link active" href="{{url_for('cad')}}"> <strong>CADASTRO</strong></a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+
+    <div class="container-fluid">
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul id="messages" class="list-unstyled">
+                    {% for message in messages %}
+                        <li class="alert alert-success">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+        <div class="page-header">
+            <br>
+            <h1>{{ titulo }}</h1>
+        </div>
+
+        {% block conteudo %}{% endblock %}
+
+    </div>
+</body>
+</html>

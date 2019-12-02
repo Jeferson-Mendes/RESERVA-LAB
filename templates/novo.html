@@ -1,0 +1,55 @@
+{% extends "template.html" %}
+{% block conteudo %}
+        <form action="/criar" method="post">
+            <fieldset>
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <select name="nome" id="nome" class="form-control">
+                        <option value="Laboratório 1">Laboratório 1</option>
+                        <option value="Laboratório 2">Laboratório 2</option>
+                        <option value="Laboratório 3">Laboratório 3</option>
+                        <option value="Laboratório 4">Laboratório 4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="setor">Setor:</label>
+                    <select name="setor" id="setor" class="form-control">
+                            <option value="Informática">Informática</option>
+                            <option value="Agropecuária">Agropecuária</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="hora">Horário:</label>
+                    <select name="hora" id="hora" class="form-control">
+                        <option value="07:30">07:30</option>
+                        <option value="09:30">09:30</option>
+                        <option value="11:30">11:30</option>
+                        <option value="13:30">13:30</option>
+                        <option value="15:30">15:30</option>
+                        <option value="18:30">18:30</option>
+                        <option value="20:30">20:30</option>
+                    </select>
+                </div>
+                
+                <div class="input-group mb-3 ">
+                    <div class="input-group-prepend" >
+                        <span class="input-group-text">Professor</span>
+                    </div>
+                    <input type="text" name="prof" id="prof" value="{{session['usuario_logado']}}" disabled>
+                </div>
+
+                <div class="input-group mb-3 ">
+                    <div class="input-group-prepend" >
+                        <span class="input-group-text" id="disciplina">Disciplina</span>
+                    </div>
+                    <input type="text" name="disciplina" id="disciplina" aria-describedby="disciplina">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+                <a href="{{url_for('index')}}">
+                    <button type="button" class="btn btn-secondary btn-voltar">Voltar</button>
+                </a>
+            </fieldset>
+        </form>
+        
+{% endblock %}

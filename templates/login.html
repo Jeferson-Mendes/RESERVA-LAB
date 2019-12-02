@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RESERVA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.css') }}">
+    
+    <style>
+        body{
+            width: 50%;
+            height: 100%;
+            margin: auto;
+        }
+        body{
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-top: 50px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+        .form-signin .checkbox{
+            font-weight: 400;
+        }
+        .form-signin .form-control{
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-signin .form-control:focus {
+            z-index: 1;
+        }
+        .form-signin input[type='text']{
+            margin-bottom: 1px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .form-signin input[type='password']{
+            margin-bottom: 12px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+    </style>
+</head>
+<body class="text-center">
+    <div class="container">
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul id="messages" class="list-unstyled">
+                    {% for message in messages %}
+                        <li class="alert alert-success">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+        
+        <form method="POST" action="/autenticar" class="form-signin">
+            <input type="hidden" name="proxima" value="{{ proxima}}">
+            <img src="../static/account_circle-24px.svg" alt="" class="mb-4" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">LOGIN</h1>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" name="usuario" id="usuario" class="form-control" placeholder="User" required autofocus>
+        
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="senha" id="senha" class="form-control" placeholder="Password" required>
+
+            <button type="submit" id="buttonSignin" class="btn btn-primary btn-lg btn-block">Sign-in</button>
+           <br>
+            <p>
+                <a href="{{url_for('index')}}">
+                        <button type="button" class="btn btn-secondary btn-voltar">Voltar</button>
+                </a>
+            </p>
+            <p class="mt-5 mb-3 text-muted">IFCE Campus Crato <br>  <strong>Sistema de reserva de Laboratórios</strong></p>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>RESERVA | Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.css') }}">
+  <style>
+    #imagem_if{
+      margin-top: 10px;
+    }
+    .nav-item{
+      margin-top: -50px;
+    }
+  </style>
+</head>
+<body>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul id="messages" class="list-unstyled">
+        {% for message in messages %}
+            <li class="alert alert-success">{{ message }}</li>
+        {% endfor %}
+          </ul>
+    {% endif %}
+{% endwith %}
+
+<div class="nav justify-content-end">
+  
+  <a class="container-fluid"><img id="imagem_if" src="../static/logo_nova.png" class="nav justify-content-end" alt="imagem responsiva"  width="20%"></a>
+  <div class="container-fluid">
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        {% if session['usuario_logado'] == None %}
+          <a class="nav-link disable" href="{{url_for('login')}}">LOGIN  </a>
+          {% endif %}
+
+        {% if session['usuario_logado'] != None %}
+         <a href="{{url_for('logout')}}"><img src="../static/exit_to_app-24px.svg" class="mb-0" width="42" height="42"></a> 
+          {% endif %}
+      </li>
+      {% if session['usuario_logado'] == None %}
+      <li class="nav-item">
+        <a class="nav-link active" href="{{url_for('cad')}}">CADASTRO</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron text-center">
+  <h1>A Simple System of to Laboratories Management</h1>
+  <p>IFCE - Campus Crato</p>
+  <P>Algoritmo e Programação II 2019.2</P>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6">
+      <a href="{{url_for('novo')}}"><h3>RESERVAR LABORATÓRIO</h3></a>
+      <p>Use este link para reservar um laboratório</p>
+    </div>
+    <div class="col-xs-6 col-sm-6">
+      <a href="{{url_for('inicio')}}" ><h3>LISTAR OCUPADO(S)</h3></a>
+      <p>Use este link para listar os laboratórios que estão sendo ou irão ser usados</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

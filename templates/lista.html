@@ -1,0 +1,28 @@
+
+
+{% extends "template.html" %}
+ {% block conteudo %}
+ 
+ <table class="table table-striped table-border">
+            <thead class="thead-default">
+                <tr>
+                    <th>Nome</th>
+                    <th>Setor</th>
+                    <th>Hora</th>
+                    <th>Professor</th>
+                    <th>Disciplina</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for lab in labs %}
+                <tr>
+                    <td>{{lab.nome}}</td>
+                    <td>{{lab.setor}}</td>
+                    <td>{{lab.hora}}</td>
+                    <td>{{lab.professor}}</td>
+                    <td>{{lab.disciplina}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}
